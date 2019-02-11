@@ -1,0 +1,11 @@
+[2019-02-07T18:46:57.162] [ERROR] cheese - ReferenceError: log is not defined
+    at /home/yideng/mine/books/controllers/IndexController.js:5:13
+    at dispatch (/home/yideng/mine/books/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:186:18)
+    at Router._lookup (/home/yideng/mine/books/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:198:12)
+    at /home/yideng/mine/books/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:138:21
+    at dispatch (/home/yideng/mine/books/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books/middlewares/errorHandler.js:15:19)
+    at dispatch (/home/yideng/mine/books/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books/middlewares/errorHandler.js:6:23)
+    at dispatch (/home/yideng/mine/books/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at serve (/home/yideng/mine/books/node_modules/_koa-static@5.0.0@koa-static/index.js:53:15)
