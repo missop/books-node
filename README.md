@@ -90,5 +90,12 @@ yii要改造的部分
 前后端不分离：直接把数据render到模板中，我们要改造的就是这一块内容
 前后端分离:直接输出json数据
 
+swig(node)+vue ssr+csr
+vue csr
+vue ssr
 
+增操作不涉及服务端渲染：只吐一个壳,后面不带数据
+return async (ctx, next) => {
+    ctx.body = await ctx.render('index');
+}
 

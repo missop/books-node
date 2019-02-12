@@ -6,7 +6,7 @@
  * 
  *  **/
 
-const safeRequest = require('../utils/safeRequest');
+const SafeRequest = require('../utils/safeRequest');
 
 /** 
  * Index类 获取后台关于图书相关的数据类
@@ -28,7 +28,8 @@ class Index {
      * getData(options)
      *  **/
     getData(options) {
-        return {};
+        const safeRequest = new SafeRequest('books/index');
+        return safeRequest.fetch();
     }
 }
 module.exports = Index;

@@ -7,6 +7,7 @@ const testController = new TestController;
 module.exports = (app) => {
     app.use(router(_ => {
         _.get('/', indexController.actionIndex());
+        _.get('/add', indexController.actionAdd());
         _.get('/test', testController.actionIndex());
     }));
 }

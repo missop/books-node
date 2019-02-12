@@ -7,6 +7,7 @@ let config = {
 
 if (process.env.NODE_ENV == "development") {
     const localConfig = {
+        baseURL:'http://localhost:8080/?r=',
         port: 3000
     }
     config = _.extend(config, localConfig);

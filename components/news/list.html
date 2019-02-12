@@ -1,3 +1,7 @@
-<div class="main">
-    {{data}}
+<div class="list">
+    <ul>
+        {% for item in data%}
+        <li>{{item.bookname}}</li>
+        {% endfor %}
+    </ul>
 </div>
