@@ -1,7 +1,16 @@
 <div class="list">
-    <ul>
+    <table class="table table-bordered">
+        <tr>
+            <td>编号</td>
+            <td>书名</td>
+            <td>作者</td>
+        </tr>
         {% for item in data%}
-        <li>{{item.bookname}}</li>
+        <tr>
+            <td>[[item.id]]</td>
+            <td>[[item.bookname]]</td>
+            <td>[[item.author]]</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
 </div>

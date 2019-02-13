@@ -7,13 +7,15 @@ let config = {
 
 if (process.env.NODE_ENV == "development") {
     const localConfig = {
-        baseURL:'http://localhost:8080/?r=',
+        baseURL: 'http://localhost:8080/?r=',
+        cacheMode: false,
         port: 3000
     }
     config = _.extend(config, localConfig);
 }
 if (process.env.NODE_ENV == "production") {
     const prodConfig = {
+        cacheMode: 'memory',
         port: 8081
     }
     config = _.extend(config, prodConfig);

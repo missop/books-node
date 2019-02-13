@@ -99,3 +99,14 @@ return async (ctx, next) => {
     ctx.body = await ctx.render('index');
 }
 
+<p>{{ message }}</p>vue中的这个ｐ出不来，因为模板引擎都用的大括号，这样导致了冲突，所以需要修改swig
+模板的形式
+刷新之后页面不更新的问题：swig的缓存机制，需要在开发环境禁用缓存，在生产环节再启用
+在config中设置cacheMode:false(开发环境)/memory(生产环境)
+
+V8对es6的新语法优化有很多，如果全部都编译为es5则会导航这些优化的浪费，所以需要判断是否需要编译为es5
+支持的好说，直接用import
+不支持的
+
+spa单页
+mpa多页
