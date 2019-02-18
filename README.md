@@ -106,7 +106,28 @@ return async (ctx, next) => {
 
 V8对es6的新语法优化有很多，如果全部都编译为es5则会导航这些优化的浪费，所以需要判断是否需要编译为es5
 支持的好说，直接用import
-不支持的
-
+不支持的babel编译
+编译命令："build": "babel ./assets/scripts/add.js --out-file ./assets/scripts/add-bundle.js",
+编译配置文件：
+{
+    "presets": [
+        "@babel/preset-env"
+    ]
+}
+编译之后报错，exports is not defined---------system.js(万能模块加载器)
+@babel/plugin-transform-modules-systemjs 辅助使得system支持babel的es6语法
 spa单页
 mpa多页
+
+save（post请求单独处理）
+php部分：
+首先必须关闭csrf,
+转化为json再输出
+YII::$app->response->format = Response::FORMAT_JSON;
+return $result;
+
+safeRequest:中的fetch方法的定义
+把参数放到body里面,
+并且需要定义method(默认是get)
+模型:中定义save对应方法
+控制器:需要使用url模块中的URLSearchParams来处理所要发送的数据

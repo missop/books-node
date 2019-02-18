@@ -3,9 +3,9 @@ class Create {
         this.btn = $(el);
     }
     fn() {
-        this.btn.click(() => {
-            alert(1);
-        });
+        this.btn.click(yd.throttle(() => {
+            fetch('添加书籍!');
+        }, 500));
     }
 }
 

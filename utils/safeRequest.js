@@ -9,6 +9,12 @@ class SafeRequest {
     /* fetch代理 */
     fetch(options) {
         let ydfetch = fetch(this.baseURL + this.url);
+        if (options.params) {
+            ydfetch = fetch(this.baseURL + this.url, {
+                method: options.method,
+                body: options.body
+            });
+        }
         return new Promise((resolve, reject) => {
             let result = {
                 code: 0,
@@ -22,7 +28,7 @@ class SafeRequest {
                     resolve(result);
                 }).catch((error) => {
                     // console.log(error);
-                
+
                     result.code = 1;
                     result.message = 'node-fetch和后端通讯异常';
                     reject(result);

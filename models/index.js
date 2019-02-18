@@ -31,5 +31,20 @@ class Index {
         const safeRequest = new SafeRequest('books/index');
         return safeRequest.fetch();
     }
+
+    /**
+     * 把用户传入的书名传到php接口
+     * @param {*} options 配置项
+     * @example
+     * return new Promise
+     * saveData(options)
+     *  **/
+    saveData(options) {
+        const safeRequest = new SafeRequest('books/create');
+        return safeRequest.fetch({
+            method:"POST",
+            params:options.params
+        });
+    }
 }
 module.exports = Index;

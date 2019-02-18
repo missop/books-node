@@ -11,7 +11,7 @@
 
 <!-- 支持新语法的用新语法 -->
 <script type="module">
-    import('http://localhost:3000/scripts/add.js').then((_) => {
+    import('/scripts/add.js').then((_) => {
         const create = new _.default('#js-add');
         create.fn();
     // console.log(create);
@@ -19,6 +19,12 @@
 </script>
 
 <!-- 不支持新语法的编译成es5 -->
-<script type="nomodule"></script>
-<script type="nomodule" src="/scripts/add-bundle.js"></script>
+<script type="nomodule" src="https://cdn.staticfile.org/systemjs/3.0.0/system.js"></script>
+<script type="nomodule">
+    System.import('/scripts/add-bundle.js').then((_) => {
+        const create = new _.default('#js-add');
+        create.fn();
+        // console.log(create);
+    });
+</script>
 {% endblock %}

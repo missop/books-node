@@ -110,3 +110,48 @@
     at Object.exports.parse (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/parser.js:755:9)
 [2019-02-12T06:17:07.890] [ERROR] cheese - { code: 1, message: 'node-fetch和后端通讯异常', data: [] }
 [2019-02-12T06:18:04.379] [ERROR] cheese - { code: 1, message: 'node-fetch和后端通讯异常', data: [] }
+[2019-02-15T19:30:59.791] [ERROR] cheese - { code: 1, message: 'node-fetch和后端通讯异常', data: [] }
+[2019-02-16T03:32:51.216] [ERROR] cheese - TypeError: Cannot read property 'params' of undefined
+    at SafeRequest.fetch (/home/yideng/mine/books-web/utils/safeRequest.js:12:21)
+    at Index.saveData (/home/yideng/mine/books-web/models/index.js:44:28)
+    at /home/yideng/mine/books-web/controllers/IndexController.js:31:40
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:186:18)
+    at Router._lookup (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:198:12)
+    at /home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:138:21
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:15:19)
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:6:23)
+[2019-02-16T03:36:26.366] [ERROR] cheese - TypeError: Cannot read property 'params' of undefined
+    at SafeRequest.fetch (/home/yideng/mine/books-web/utils/safeRequest.js:14:21)
+    at Index.saveData (/home/yideng/mine/books-web/models/index.js:44:28)
+    at /home/yideng/mine/books-web/controllers/IndexController.js:31:40
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:186:18)
+    at Router._lookup (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:198:12)
+    at /home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:138:21
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:15:19)
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:6:23)
+[2019-02-16T03:36:28.143] [ERROR] cheese - TypeError: Cannot read property 'params' of undefined
+    at SafeRequest.fetch (/home/yideng/mine/books-web/utils/safeRequest.js:14:21)
+    at Index.saveData (/home/yideng/mine/books-web/models/index.js:44:28)
+    at /home/yideng/mine/books-web/controllers/IndexController.js:31:40
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:186:18)
+    at Router._lookup (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:198:12)
+    at /home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:138:21
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:15:19)
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:6:23)
+[2019-02-16T03:44:31.612] [ERROR] cheese - TypeError: Cannot read property 'params' of undefined
+    at SafeRequest.fetch (/home/yideng/mine/books-web/utils/safeRequest.js:12:21)
+    at Index.saveData (/home/yideng/mine/books-web/models/index.js:44:28)
+    at /home/yideng/mine/books-web/controllers/IndexController.js:31:40
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:186:18)
+    at Router._lookup (/home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:198:12)
+    at /home/yideng/mine/books-web/node_modules/_koa-simple-router@0.2.0@koa-simple-router/index.js:138:21
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:15:19)
+    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
+    at app.use (/home/yideng/mine/books-web/middlewares/errorHandler.js:6:23)
