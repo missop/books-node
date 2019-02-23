@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development supervisor app",
-    "build": "babel ./assets/scripts/add.js --out-file ./assets/scripts/add-bundle.js",
-    "docs": "jsdoc ./**/*.js -d ./docs/jsdocs"
+    "dev": "cross-env NODE_ENV=development nodemon ./src/server/app",
+    "build": "babel ./web/assets/scripts/add.js --out-file ./web/assets/scripts/add-bundle.js",
+    "docs": "jsdoc ./**/*.js -d ./docs/jsdocs",
+    "server:dev": "scripty",
+    "server:prod": "scripty",
+    "server:lint": "scripty"
   },
   "keywords": [],
   "author": "",
@@ -27,8 +30,15 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-systemjs": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "cross-env": "^5.2.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-rollup": "^2.16.2",
+    "gulp-watch": "^5.0.1",
     "jsdoc": "^3.5.5",
+    "rollup-plugin-replace": "^2.1.0",
+    "scripty": "^1.9.1",
     "supervisor": "^0.12.0"
   }
 }

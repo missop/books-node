@@ -131,3 +131,31 @@ safeRequest:中的fetch方法的定义
 并且需要定义method(默认是get)
 模型:中定义save对应方法
 控制器:需要使用url模块中的URLSearchParams来处理所要发送的数据
+
+<!-- 第三周目录结构变化了 -->
+scripty代表了shell命令
+
+npm run server:dev时报错没有权限的处理方法：
+一　如果把scripts文件的权限提升之后就没有权限在图形界面中打开了，这种方法不好
+二　如果用chod -x加权限那么每次都要加sudo来运行文件
+三  最佳处理方式是部分加权限：chmod -R +x scripts
+
+missing script:script:dev
+没有正确安装scripty,它是依赖于supervisor,所以supervisor也必须安装
+
+第一步：先使用gulp-rollup完成import的编译
+<!-- 必须输出return -->
+return gulp.src(entry)
+        .pipe(rollup({
+            <!-- 需要指定输出文件 -->
+            output: {
+                format: 'cjs'
+            },
+            /* 一定是具体的文件 */
+            input: './src/server/config/index.js'
+        }))
+        .pipe(gulp.dest('./dist'));
+        
+        这样就能够编译import，但是仍然不能清洗if(){}等条件判断
+
+第二步：gulp不认识NODE_ENV，所以用换的做法,rollup-plugin-replace

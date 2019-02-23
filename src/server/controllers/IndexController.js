@@ -5,10 +5,14 @@ class IndexController {
     constructor() { }
     actionIndex() {
         return async (ctx, next) => {
+            // console.log(1);
+            
             const index = new Index();
+            // console.log(2);
+             
             const result = await index.getData();
-            // console.log(result);
-
+        // console.log(3);
+        
             ctx.body = await ctx.render('index', {
                 data: result.data
             });
