@@ -1,5 +1,11 @@
 "use strict";
 
+var _errorHandler = require("./middlewares/errorHandler");
+
+var _errorHandler2 = _interopRequireDefault(_errorHandler);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const Koa = require('koa');
 
 const app = new Koa();
@@ -11,8 +17,6 @@ const render = require('koa-swig');
 const co = require('co');
 
 const serve = require('koa-static');
-
-const errorHandler = require('./middlewares/errorHandler');
 
 const log4js = require('log4js');
 
@@ -47,7 +51,7 @@ log4js.configure({
 });
 const logger = log4js.getLogger('cheese'); // 容错
 
-errorHandler.error(app, logger);
+_errorHandler2.default.error(app, logger);
 
 require('./controllers')(app);
 

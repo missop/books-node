@@ -25,7 +25,7 @@ class SafeRequest {
                 .then(res => res.json())
                 .then(json => {
                     result.data = json;
-                    console.log(result);
+                    // console.log(result);
                     resolve(result);
                 }).catch((error) => {
                     // console.log(error);

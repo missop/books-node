@@ -4,7 +4,7 @@ const path = require('path')
 const render = require('koa-swig');
 const co = require('co');
 const serve = require('koa-static');
-const errorHandler = require('./middlewares/errorHandler');
+import errorHandler from './middlewares/errorHandler';
 const log4js = require('log4js');
 const config = require('./config');
 

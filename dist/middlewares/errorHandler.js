@@ -1,5 +1,8 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 const errorHandler = {
   error(app, logger) {
     // 500容错,生成日志
@@ -26,4 +29,4 @@ const errorHandler = {
   }
 
 };
-module.exports = errorHandler;
+exports.default = errorHandler;

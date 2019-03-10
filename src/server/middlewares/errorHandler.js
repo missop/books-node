@@ -22,4 +22,4 @@ const errorHandler = {
         })
     }
 }
-module.exports = errorHandler;
+export default errorHandler;

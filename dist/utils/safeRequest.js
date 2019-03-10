@@ -29,8 +29,8 @@ class SafeRequest {
         data: []
       };
       ydfetch.then(res => res.json()).then(json => {
-        result.data = json;
-        console.log(result);
+        result.data = json; // console.log(result);
+
         resolve(result);
       }).catch(error => {
         // console.log(error);

@@ -1,5 +1,11 @@
 "use strict";
 
+var _cheerio = require("cheerio");
+
+var _cheerio2 = _interopRequireDefault(_cheerio);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const Index = require('../models');
 
 const {
@@ -14,17 +20,25 @@ class IndexController {
       // console.log(1);
       const index = new Index(); // console.log(2);
 
-      const result = await index.getData(); // console.log(3);
-
-      ctx.body = await ctx.render('index', {
+      const result = await index.getData();
+      const html = await ctx.render('books/pages/list', {
         data: result.data
-      });
+      }); // console.log(3);
+
+      if (ctx.request.header['x-pjax']) {
+        /* 点击过来的才有pjax */
+        const $ = _cheerio2.default.load(html);
+
+        ctx.body = $('#js-hooks').html();
+      } else {
+        ctx.body = html;
+      }
     };
   }
 
   actionAdd() {
     return async (ctx, next) => {
-      ctx.body = await ctx.render('add');
+      ctx.body = await ctx.render('books/pages/add');
     };
   }
 

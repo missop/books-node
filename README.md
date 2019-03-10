@@ -159,3 +159,117 @@ return gulp.src(entry)
         这样就能够编译import，但是仍然不能清洗if(){}等条件判断
 
 第二步：gulp不认识NODE_ENV，所以用换的做法,rollup-plugin-replace
+
+webpack打前端资源包
+前端文件目录
+.
+├── assets
+│   ├── scripts
+│   │   ├── add-bundle.js
+│   │   ├── add.js
+│   │   ├── index.js
+│   │   └── yd.js
+│   └── style
+│       ├── common.css
+│       └── index.css
+├── components
+│   ├── add
+│   │   ├── add.css
+│   │   ├── add.html
+│   │   └── add.js
+│   ├── common
+│   │   ├── common.css
+│   │   ├── common.js
+│   │   └── navigation.html
+│   └── list
+│       ├── list.css
+│       ├── list.html
+│       └── list.js
+└── views
+    ├── books
+    │   ├── books-add.entry.js
+    │   ├── books-list.entry.js
+    │   └── pages
+    │       ├── add.html
+    │       └── list.html
+    ├── common
+    │   └── layout.html
+    └── index.html
+首先需要创建入口文件，引入css
+import './list.css';
+const list = {
+    init() {
+        console.log("组件对应的入口文件");
+    }
+}
+export default list;
+然后webpack中去找入口
+
+## 4.1-前端文件打包(下)
+上节课的回顾：
+4.1-1 创建入口文件，文件名称为路由-action.entry.js,打包时解析文件名
+4.1-2 将js文件打包至dist/assets中,html文件打包至dist中，文件目录不变
+
+本节课的内容提要：
+4.1-3 首先需要把基础配置和环境配置合并一下，用到merge插件,
+打包后我们发现views打到assets里面去了，所以需要把views的打包路径向外设置一层即可,
+接下来我们需要去打包components＋layout.html,并且把assets中的js,css路径注入到模板对应位置
+本节课重点：打包components＋layout.html,并且把assets中的js,css路径注入到模板对应位置(mpa+ssr)
+画个图加强理解：
+{%图4.1-3.1%}
+落地页---搜索引擎直接抓取到的页面<----直出有利于seo，但是资源会重复请求，例如
+ａ路由与ｂ路由同时都要请求xx.js,那么从ａ切到ｂ之后会再次请求xx.js，
+这是下节课需要处理的问题：只切换页面变化的部分，就是SPA,
+本节课是MPA
+
+4.1-4先把html文件提取出来，由于html只是模板文件，只需要原封不动地复制出来即可，用到了一个插件：
+copy-webpack-plugin,注意以下配置：
+copyUnmodified: true,
+ignore: [
+    '*.js', '*.css'
+]
+
+4.1-5自定义webpack插件拦截webpack打包过程，把对应文件地址注入，webpack有生命周期钩子，在所有任务
+之前触发
+由于webpack更新之后很多包不能使用，所以很多代码都与官方不一致，因此需要去从源码中寻找蛛丝马迹(node_modules),
+html-webpack-plugin源码
+4.1-5-1何时才能拦截最后生成的swig
+4.1-5-2怎么分清swig对应的js,css
+由于生命周期是html-webpack-plugin提供的，所以我们自定义的插件需要在它后面执行
+ new HtmlAfterWebpackPlugin(),..._plugins(!会报错)
+ 在这个钩子中能够打印出所有打包文件的信息，但是我们需要将每个文件分开，此时需要使用chunks
+ webpack.config.js=>配置chunks: [entryKey]
+这里犯了一个错误：没有赋值
+ _html = _html.replace('<!-- injectscript -->', result.js.join(""));
+路径的/写成了中文的／
+ { Error: ENOENT: no such file or directory, open '/home/yideng/mine/books-web/dist/components／list/list.html'
+ css-loader style-loader
+
+
+webpack运行时马上执行webpack的自定义插件
+
+#5.1 性能优化（上）
+上节课的回顾：
+5.1-1 前端文件打包，html使用copy-webpack-plugin拷贝，css和js用自定义的webpack插件进行注入
+上节课的遗留问题：link打包成了script
+
+本节课内容提要：
+5.1-2 xtag的使用(web components)
+载入x-tag库，填写模板，绑定事件
+https://cdn.staticfile.org/x-tag/2.0.9-alpha/x-tag-raw.js
+'::template(true)'() {}
+'click::event'(){}
+5.1-3 切页时只替换改变的DOM,不重复加载资源
+pjax代理了页面的a标签，发送了一个请求给服务端，请求头中有x-pjax
+前端:jQuery+pjax,后端:cheerio(相当于jQ)
+5.1-4 quicklink 可以执行下一个页面的JS/css
+add.html中的css和js都是webpack插入的，需要加一个类名来取地址，然后填到组件中
+* Detects links within the viewport (using Intersection Observer)
+监听是否在视窗范围内
+* Waits until the browser is idle (using requestIdleCallback) 
+浏览器空闲时加载
+* Checks if the user isn't on a slow connection (using navigator.connection.effectiveType) or has data-saver enabled (using navigator.connection.saveData)
+慢网速就不预加载了
+* Prefetches URLs to the links (using <link rel=prefetch> or XHR). Provides some control over the request priority (can switch to fetch() if supported).
+使用link-prefetch
+

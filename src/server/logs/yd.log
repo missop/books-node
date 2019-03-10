@@ -166,3 +166,43 @@
     at app.use (/home/yideng/mine/books-web/src/server/middlewares/errorHandler.js:15:19)
     at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
     at app.use (/home/yideng/mine/books-web/src/server/middlewares/errorHandler.js:6:23)
+[2019-03-03T05:46:58.829] [ERROR] cheese - { code: 1, message: 'node-fetch和后端通讯异常', data: [] }
+[2019-03-03T05:50:14.946] [ERROR] cheese - { code: 1, message: 'node-fetch和后端通讯异常', data: [] }
+[2019-03-03T05:51:00.579] [ERROR] cheese - { Error: ENOENT: no such file or directory, open '/home/yideng/mine/books-web/web/views/index.html'
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/yideng/mine/books-web/web/views/index.html' }
+[2019-03-03T05:56:46.587] [ERROR] cheese - { Error: ENOENT: no such file or directory, open '/home/yideng/mine/books-web/web/views/books/pages/list.html'
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/yideng/mine/books-web/web/views/books/pages/list.html' }
+[2019-03-03T06:02:08.702] [ERROR] cheese - { Error: ENOENT: no such file or directory, open '/home/yideng/mine/books-web/dist/views/components/common/navigation.html'
+    at Object.fs.openSync (fs.js:646:18)
+    at Object.fs.readFileSync (fs.js:551:33)
+    at Object.ret.load (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/loaders/filesystem.js:59:15)
+    at exports.Swig.compileFile (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:740:31)
+    at Object.eval [as tpl] (eval at precompile (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:537:13), <anonymous>:10:18)
+    at compiled (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:664:18)
+    at /home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:604:20
+    at /home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:735:9
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/yideng/mine/books-web/dist/views/components/common/navigation.html' }
+[2019-03-03T06:04:30.221] [ERROR] cheese - { Error: ENOENT: no such file or directory, open '/home/yideng/mine/books-web/dist/components／list/list.html'
+    at Object.fs.openSync (fs.js:646:18)
+    at Object.fs.readFileSync (fs.js:551:33)
+    at Object.ret.load (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/loaders/filesystem.js:59:15)
+    at exports.Swig.compileFile (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:740:31)
+    at Object.eval [as tpl] (eval at precompile (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:537:13), <anonymous>:13:18)
+    at compiled (/home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:664:18)
+    at /home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:604:20
+    at /home/yideng/mine/books-web/node_modules/_swig-templates@2.0.3@swig-templates/lib/swig.js:735:9
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/yideng/mine/books-web/dist/components／list/list.html' }

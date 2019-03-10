@@ -2,8 +2,8 @@
 import {join} from 'path';
 const _ = require("lodash");
 let config = {
-    "viewDir": join(__dirname, "..", "..", "web", "views"),
-    "staticDir": join(__dirname, "..", "..", "web", "assets")
+    "viewDir": join(__dirname, "..", "..", "dist", "views"),
+    "staticDir": join(__dirname, "..", "..", "dist", "assets")
 }
 // console.log(config);
 

@@ -1,26 +1,46 @@
 const Index = require('../models');
 const { URLSearchParams } = require('url');
+import cheerio from 'cheerio';
 
 class IndexController {
     constructor() { }
     actionIndex() {
         return async (ctx, next) => {
             // console.log(1);
-            
+
             const index = new Index();
             // console.log(2);
-             
+
             const result = await index.getData();
-        // console.log(3);
-        
-            ctx.body = await ctx.render('index', {
+            const html = await ctx.render('books/pages/list', {
                 data: result.data
             });
+            // console.log(3);
+            if (ctx.request.header['x-pjax']) {
+                /* 点击过来的才有pjax */
+                const $ = cheerio.load(html);
+                ctx.body = $('#js-hooks').html();
+            } else {
+                ctx.body = html;
+            }
         }
     }
     actionAdd() {
         return async (ctx, next) => {
-            ctx.body = await ctx.render('add');
+            const html = await ctx.render('books/pages/add');
+            if (ctx.request.header['x-pjax']) {
+                const $ = cheerio.load(html);
+                let _result = '<x-add></x-add>';
+                $('.layload-css').each(function () {
+                    _result += `<link href="${$(this).attr('href')}">`;
+                });
+                $('.layload-js').each(function () {
+                    _result += `<script src="${$(this).attr('src')}"></script>`;
+                });
+                ctx.body = _result;
+            } else {
+                ctx.body = html;
+            }
         }
     }
     actionSave() {
