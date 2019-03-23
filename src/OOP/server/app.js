@@ -7,30 +7,10 @@ const serve = require('koa-static');
 import errorHandler from './middlewares/errorHandler';
 const log4js = require('log4js');
 const config = require('./config');
-import {
-    asClass,
-    asValue,
-    Lifetime,
-    createContainer
-} from 'awilix';
-import {
-    scopePerRequest,
-    loadControllers
-} from 'awilix-koa';
 
 // 静态资源
 app.use(serve(config.staticDir));
-// 创造一个容器
-const container = createContainer();
-// 把所有serveice注入容器中去
-container.loadModules(__dirname + '/services/*.js', {
-    // 驼峰转化
-    formatName: 'camelCase',
-    registerOptions: {
-        lifetime: Lifetime.SCOPED
-    }
-});
-app.use(scopePerRequest(container));
+
 // 注入路由机制
 app.context.render = co.wrap(render({
     root: path.join(config.viewDir),
@@ -51,8 +31,7 @@ const logger = log4js.getLogger('cheese');
 // 容错
 errorHandler.error(app, logger);
 
-// 自动装载路由
-app.use(loadControllers(__dirname + '/controllers/*.js'));
+require('./controllers')(app);
 
 app.listen(config.port, () => {
     console.log(`服务已启动于${config.port}端口`);

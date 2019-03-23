@@ -248,7 +248,7 @@ html-webpack-plugin源码
 
 webpack运行时马上执行webpack的自定义插件
 
-#5.1 性能优化（上）
+##5.1 性能优化（上）
 上节课的回顾：
 5.1-1 前端文件打包，html使用copy-webpack-plugin拷贝，css和js用自定义的webpack插件进行注入
 上节课的遗留问题：link打包成了script
@@ -272,4 +272,63 @@ add.html中的css和js都是webpack插入的，需要加一个类名来取地址
 慢网速就不预加载了
 * Prefetches URLs to the links (using <link rel=prefetch> or XHR). Provides some control over the request priority (can switch to fetch() if supported).
 使用link-prefetch
+
+##5.2 性能优化（下）
+上节课回顾:
+5.2-1 quicklink实现资源预加载，xtag实现web components
+
+本节课：代码解耦合
+* nodejs=>controller=>init=>app.js 
+这样的话一个引一个，一旦某一个发生改变则整个链条断了
+* 使用AOP解决代码耦合度高的问题：
+把依赖都放到一个容器中，需要的时候再去引入(控制反转)
+* 首先去掉controller的引入,然后引入awilix-koa(重磅成员)
+5.2-2 awilix---Dependency Injection(依赖注入)
+Extremely powerful Dependency Injection (DI) container for JavaScript/Node, written in TypeScript. Make IoC great again!
+5.2-3 awilix-koa
+model=>services
+从awilix中引入以下方法:Lifetime/createContainer/
+从awilix-koa中引入:scopePerRequest/loadControllers
+需要注意代码位置:
+在静态资源之下每次实例化servives:
+```app.js
+// 创造一个容器
+const container = createContainer();
+// 把所有serveice注入容器中去
+container.loadModules(__dirname + '/services/*.js', {
+    // 驼峰转化
+    formatName: 'camelCase',
+    registerOptions: {
+        lifetime: Lifetime.SCOPED
+    }
+});
+app.use(scopePerRequest(container));
+```
+listen前面进行路由载入:
+```app.js
+app.use(loadControllers(__dirname +  '/controllers/*.js'));
+```
+最后在IndexController里面修改原来的代码就可以了
+```IndexController.js
+import {
+    route,
+    GET,
+    POST
+} from 'awilix-koa'
+@route('/index')
+@GET()
+```
+5.2-4 gulp增加一个babel装饰器编译插件
+'decorators-legacy' isn't currently enabled
+配置改为这样就好了
+["@babel/plugin-proposal-decorators", {
+   legacy: true
+}]
+5.2-5 报错处理
+我们在使用awilix之后找不到页面了，这种情况一般有以下原因：
+5.2-5-1 dist还有原来打包的文件，需要清除掉，重新打包
+5.2-5-2 可能是一些写法问题，这个时候需要复制一个去排查错误
+
+
+
 

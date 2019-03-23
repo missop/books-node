@@ -206,36 +206,3 @@
   code: 'ENOENT',
   syscall: 'open',
   path: '/home/yideng/mine/books-web/dist/components／list/list.html' }
-[2019-03-22T20:10:05.463] [ERROR] cheese - ReferenceError: Index is not defined
-    at IndexController.actionIndex (/home/yideng/mine/books-web/dist/controllers/IndexController.js:33:19)
-    at memberInvoker (/home/yideng/mine/books-web/node_modules/_awilix-koa@3.1.0@awilix-koa/lib/invokers.js:85:45)
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:44:32)
-    at next (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:45:18)
-    at /home/yideng/mine/books-web/node_modules/_koa-router@7.4.0@koa-router/lib/router.js:346:16
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:44:32)
-    at /home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:36:12
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-router@7.4.0@koa-router/lib/router.js:351:31)
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
-    at /home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:34:12
-[2019-03-22T20:11:25.239] [ERROR] cheese - ReferenceError: Index is not defined
-    at IndexController.actionIndex (/home/yideng/mine/books-web/dist/controllers/IndexController.js:33:19)
-    at memberInvoker (/home/yideng/mine/books-web/node_modules/_awilix-koa@3.1.0@awilix-koa/lib/invokers.js:85:45)
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:44:32)
-    at next (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:45:18)
-    at /home/yideng/mine/books-web/node_modules/_koa-router@7.4.0@koa-router/lib/router.js:346:16
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:44:32)
-    at /home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:36:12
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-router@7.4.0@koa-router/lib/router.js:351:31)
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
-    at /home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:34:12
-[2019-03-22T20:11:30.902] [ERROR] cheese - ReferenceError: Index is not defined
-    at IndexController.actionIndex (/home/yideng/mine/books-web/dist/controllers/IndexController.js:33:19)
-    at memberInvoker (/home/yideng/mine/books-web/node_modules/_awilix-koa@3.1.0@awilix-koa/lib/invokers.js:85:45)
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:44:32)
-    at next (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:45:18)
-    at /home/yideng/mine/books-web/node_modules/_koa-router@7.4.0@koa-router/lib/router.js:346:16
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:44:32)
-    at /home/yideng/mine/books-web/node_modules/_koa-compose@3.2.1@koa-compose/index.js:36:12
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-router@7.4.0@koa-router/lib/router.js:351:31)
-    at dispatch (/home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:42:32)
-    at /home/yideng/mine/books-web/node_modules/_koa-compose@4.1.0@koa-compose/index.js:34:12

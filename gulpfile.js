@@ -15,7 +15,12 @@ function builddev(params) {
             .pipe(babel({
                 /* 忽略外面的babelrc,这个对象其实相当于一个babelrc文件 */
                 babelrc: false,
-                plugins: ["transform-es2015-modules-commonjs"]
+                plugins: [
+                    "transform-es2015-modules-commonjs",
+                    ["@babel/plugin-proposal-decorators", {
+                        legacy: true
+                    }]
+                ]
             }))
             .pipe(gulp.dest('dist'));
     });
@@ -28,7 +33,10 @@ function buildprod(params) {
             babelrc: false,
             /* 上线环境可以忽略掉config文件，交给后端去处理了,必须是一个数组 */
             ignore: ['./src/server/config/*.js'],
-            plugins: ["transform-es2015-modules-commonjs"]
+            plugins: [
+                "transform-es2015-modules-commonjs",
+                "@babel/plugin-proposal-decorators"
+            ]
         }))
         .pipe(gulp.dest('dist'));
 }
