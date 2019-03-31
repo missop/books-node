@@ -10,7 +10,7 @@ const assetHelp = (data) => {
         js.push(dir.js(jsitem));
     }
     for (const cssitem of data.css) {
-        css.push(dir.js(cssitem));
+        css.push(dir.css(cssitem));
     }
     return {
         js,
@@ -28,6 +28,8 @@ class HtmlAfterWebpackPlugin {
                 const result = assetHelp(htmlPluginData.assets);
                 _html = _html.replace(/pages:/g, '../../');
                 _html = _html.replace(/components:/g, '../../../components/');
+                console.log(result.css);
+                
                 _html = _html.replace('<!-- injectcss -->', result.css.join(""));
                 _html = _html.replace('<!-- injectscript -->', result.js.join(""));
                 htmlPluginData.html = _html;

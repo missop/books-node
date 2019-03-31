@@ -44,7 +44,8 @@ let webpackConifg = {
                     {
                         loader: MiniCssExtractPlugin.loader
                     },
-                    "css-loader"
+                    "css-loader",
+                    "postcss-loader"
                 ]
             }
         ]

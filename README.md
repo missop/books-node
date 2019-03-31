@@ -329,6 +329,25 @@ import {
 5.2-5-1 dist还有原来打包的文件，需要清除掉，重新打包
 5.2-5-2 可能是一些写法问题，这个时候需要复制一个去排查错误
 
+##6.1  css改造
+上节课的回顾:
+6.1-1 使用awilix以及awilix-koa进行依赖注入(DI)
+
+6.1-2 本节课主要使用css next语法，并使用postcss进行编译
+
+## 7 生产环境打包
+7-1 上节课回顾：postcss打包
+
+7-2 生产环境要做什么？
+压缩代码，打md5戳等等
+之前用的htmlwebpackPlugin能够直接压缩，现在使用了copy-plugin该怎么压缩代码呢？
+hash/chunkhash/contenthash对比
+hash:文件公用一个md5
+chunkhash:每一个文件不同md5
+js+css mini css文件变了那么js也需要变
+contenthash:css变了 js也不用修改
+chunkid/modulesid
+html-minifier html-minifier-hint实现边打包边hint,hint不过不让打包成功
 
 
 

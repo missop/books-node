@@ -6,7 +6,7 @@ import {
     POST
 } from 'awilix-koa'
 
-@route('/index')
+@route('/books')
 class IndexController {
     constructor({ indexService }) {
         // di
@@ -15,16 +15,10 @@ class IndexController {
     @route('/index')
     @GET()
     async actionIndex(ctx, next) {
-        // console.log(1);
-
-        const index = new Index();
-        // console.log(2);
-
-        const result = await index.getData();
+        const result = await this.indexService.getData();
         const html = await ctx.render('books/pages/list', {
             data: result.data
         });
-        // console.log(3);
         if (ctx.request.header['x-pjax']) {
             /* 点击过来的才有pjax */
             const $ = cheerio.load(html);

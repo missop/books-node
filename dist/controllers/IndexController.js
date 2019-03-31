@@ -20,7 +20,7 @@ const {
   URLSearchParams
 } = require('url');
 
-let IndexController = (_dec = (0, _awilixKoa.route)('/index'), _dec2 = (0, _awilixKoa.route)('/index'), _dec3 = (0, _awilixKoa.GET)(), _dec4 = (0, _awilixKoa.route)('/add'), _dec5 = (0, _awilixKoa.GET)(), _dec6 = (0, _awilixKoa.route)('/save'), _dec7 = (0, _awilixKoa.POST)(), _dec(_class = (_class2 = class IndexController {
+let IndexController = (_dec = (0, _awilixKoa.route)('/books'), _dec2 = (0, _awilixKoa.route)('/index'), _dec3 = (0, _awilixKoa.GET)(), _dec4 = (0, _awilixKoa.route)('/add'), _dec5 = (0, _awilixKoa.GET)(), _dec6 = (0, _awilixKoa.route)('/save'), _dec7 = (0, _awilixKoa.POST)(), _dec(_class = (_class2 = class IndexController {
   constructor({
     indexService
   }) {
@@ -29,13 +29,10 @@ let IndexController = (_dec = (0, _awilixKoa.route)('/index'), _dec2 = (0, _awil
   }
 
   async actionIndex(ctx, next) {
-    // console.log(1);
-    const index = new Index(); // console.log(2);
-
-    const result = await index.getData();
+    const result = await this.indexService.getData();
     const html = await ctx.render('books/pages/list', {
       data: result.data
-    }); // console.log(3);
+    });
 
     if (ctx.request.header['x-pjax']) {
       /* 点击过来的才有pjax */
